@@ -6,14 +6,99 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A62FDDC21634240B00FC8A28 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A62FDDC11634240B00FC8A28 /* main.cpp */; };
+		A62FDDC41634240B00FC8A28 /* TPG4162.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A62FDDC31634240B00FC8A28 /* TPG4162.1 */; };
+		A62FDDCA1634244200FC8A28 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62FDDC81634244200FC8A28 /* GLUT.framework */; };
+		A62FDDCB1634244200FC8A28 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62FDDC91634244200FC8A28 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A62FDDBB1634240B00FC8A28 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				A62FDDC41634240B00FC8A28 /* TPG4162.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A61A4C7616343F2600FDF017 /* NVGT-88-06.sgy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "NVGT-88-06.sgy"; sourceTree = "<group>"; };
+		A62FDDBD1634240B00FC8A28 /* TPG4162 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TPG4162; sourceTree = BUILT_PRODUCTS_DIR; };
+		A62FDDC11634240B00FC8A28 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A62FDDC31634240B00FC8A28 /* TPG4162.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TPG4162.1; sourceTree = "<group>"; };
+		A62FDDC81634244200FC8A28 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../../System/Library/Frameworks/GLUT.framework; sourceTree = "<group>"; };
+		A62FDDC91634244200FC8A28 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../System/Library/Frameworks/OpenGL.framework; sourceTree = "<group>"; };
+		A62FDDCC1634261500FC8A28 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A62FDDBA1634240B00FC8A28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A62FDDCA1634244200FC8A28 /* GLUT.framework in Frameworks */,
+				A62FDDCB1634244200FC8A28 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		A62FDDB0163423BE00FC8A28 = {
 			isa = PBXGroup;
 			children = (
+				A61A4C7616343F2600FDF017 /* NVGT-88-06.sgy */,
+				A62FDDC81634244200FC8A28 /* GLUT.framework */,
+				A62FDDC91634244200FC8A28 /* OpenGL.framework */,
+				A62FDDC01634240B00FC8A28 /* TPG4162 */,
+				A62FDDBE1634240B00FC8A28 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		A62FDDBE1634240B00FC8A28 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A62FDDBD1634240B00FC8A28 /* TPG4162 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A62FDDC01634240B00FC8A28 /* TPG4162 */ = {
+			isa = PBXGroup;
+			children = (
+				A62FDDC11634240B00FC8A28 /* main.cpp */,
+				A62FDDCC1634261500FC8A28 /* main.h */,
+				A62FDDC31634240B00FC8A28 /* TPG4162.1 */,
+			);
+			path = TPG4162;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A62FDDBC1634240B00FC8A28 /* TPG4162 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A62FDDC51634240B00FC8A28 /* Build configuration list for PBXNativeTarget "TPG4162" */;
+			buildPhases = (
+				A62FDDB91634240B00FC8A28 /* Sources */,
+				A62FDDBA1634240B00FC8A28 /* Frameworks */,
+				A62FDDBB1634240B00FC8A28 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPG4162;
+			productName = TPG4162;
+			productReference = A62FDDBD1634240B00FC8A28 /* TPG4162 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A62FDDB2163423BE00FC8A28 /* Project object */ = {
@@ -29,12 +114,25 @@
 				en,
 			);
 			mainGroup = A62FDDB0163423BE00FC8A28;
+			productRefGroup = A62FDDBE1634240B00FC8A28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A62FDDBC1634240B00FC8A28 /* TPG4162 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A62FDDB91634240B00FC8A28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A62FDDC21634240B00FC8A28 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		A62FDDB7163423BE00FC8A28 /* Debug */ = {
@@ -49,6 +147,59 @@
 			};
 			name = Release;
 		};
+		A62FDDC61634240B00FC8A28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A62FDDC71634240B00FC8A28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -57,6 +208,15 @@
 			buildConfigurations = (
 				A62FDDB7163423BE00FC8A28 /* Debug */,
 				A62FDDB8163423BE00FC8A28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A62FDDC51634240B00FC8A28 /* Build configuration list for PBXNativeTarget "TPG4162" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A62FDDC61634240B00FC8A28 /* Debug */,
+				A62FDDC71634240B00FC8A28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
