@@ -6,19 +6,15 @@
 //
 //
 
-
 #include "main.h"
 
-
 char** mat;
-
-
 
 
 int main(int argc, char * argv[])
 {
     // read data file into a matrix
-    readFileToMatrix("/Users/tmn/Dropbox/TPG4162-2/NVGT-88-06.sgy");
+    readFileToMatrix("/Volumes/Macintosh HD/Dropbox/TPG4162-2/NVGT-88-06.sgy");
     
     char * texturedata = (char *)malloc(sizeof(char)*1024*1024);
 
@@ -60,18 +56,16 @@ int main(int argc, char * argv[])
     glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1024, 1024, 0, GL_RED, GL_UNSIGNED_BYTE, texturedata);
    
     // when texture area is small, bilinear filter the closest mipmap
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                    GL_LINEAR );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+    
     // when texture area is large, bilinear filter the first mipmap
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
     
     bool wrap = true;
     // if wrap is true, the texture wraps over at the edges (repeat)
     //       ... false, the texture ends at the edges (clamp)
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                    wrap ? GL_REPEAT : GL_CLAMP );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                    wrap ? GL_REPEAT : GL_CLAMP );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP );
     
     
     // glEnableClientState(<#GLenum array#>)
@@ -93,8 +87,6 @@ static void redraw(void)
 {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    
 
     glBegin( GL_QUADS );
     glTexCoord2d(0.0,0.0); glVertex2d(0.0,0.0);
@@ -112,22 +104,23 @@ static void readFileToMatrix(char* filename)
 {
     FILE *pFile = fopen(filename, "rb");
     
-    if (pFile == NULL)
-    {
-        char test[] = "Failed to open file";
-        perror(test);
+    if (pFile == NULL) {
+        perror("Failed to open file");
+    }
+    else {
+        // skip the headers
+        fseek(pFile, 3600, SEEK_SET);
+        
+        
+        mat = (char**)malloc(sizeof(char*)*13483);
+        
+        for (int i = 0; i < 13483; i++) {
+            mat[i] = (char *)malloc(sizeof(char) * 1750);
+            fseek(pFile, 240, SEEK_CUR);
+            fread(mat[i], 1, 1750, pFile);
+        }
     }
     
-    fseek(pFile, 3600, SEEK_SET);
-    
-    mat = (char**)malloc(sizeof(char*)*13483);
-    
-    for (int i = 0; i < 13483; i++) {
-        mat[i] = (char *)malloc(sizeof(char) * 1750);
-        fseek(pFile, 240, SEEK_CUR);
-        fread(mat[i], 1, 1750, pFile);
-    }
-
     // close file reader
     fclose(pFile);
 }
