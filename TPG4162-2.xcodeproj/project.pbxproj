@@ -27,7 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A61A4C7616343F2600FDF017 /* NVGT-88-06.sgy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "NVGT-88-06.sgy"; sourceTree = "<group>"; };
 		A62FDDBD1634240B00FC8A28 /* TPG4162 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TPG4162; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62FDDC11634240B00FC8A28 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A62FDDC31634240B00FC8A28 /* TPG4162.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TPG4162.1; sourceTree = "<group>"; };
@@ -52,7 +51,6 @@
 		A62FDDB0163423BE00FC8A28 = {
 			isa = PBXGroup;
 			children = (
-				A61A4C7616343F2600FDF017 /* NVGT-88-06.sgy */,
 				A62FDDC81634244200FC8A28 /* GLUT.framework */,
 				A62FDDC91634244200FC8A28 /* OpenGL.framework */,
 				A62FDDC01634240B00FC8A28 /* TPG4162 */,
