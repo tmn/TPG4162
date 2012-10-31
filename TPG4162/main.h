@@ -16,5 +16,7 @@
 static void redraw(void);          //declarations
 int main(int argc, char * argv[]);
 static void readFileToMatrix(char* filename);
+void keyPressed (unsigned char key, int x, int y);
+void drawSomething(bool wrap);
 
 #endif
