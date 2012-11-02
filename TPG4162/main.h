@@ -12,13 +12,18 @@
 #ifndef TPG4162_2_main_h
 #define TPG4162_2_main_h
 
-
-static void redraw(void);          //declarations
 int main(int argc, char * argv[]);
-static void readFileToMatrix(char* filename);
+
+void redraw(void);          //declarations
+void readFileToMatrix(char* filename);
+
+void createTexture(bool wrap, int texture_num);
+
+void cleanup();
 void keyPressed (unsigned char key, int x, int y);
-GLuint createTexture(bool wrap);
+void mouseClick(int button, int state, int x, int y);
 void mouseMove (int x, int y);
 void reshape(int w, int h);
+
 
 #endif
