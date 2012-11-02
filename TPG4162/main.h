@@ -17,6 +17,8 @@ static void redraw(void);          //declarations
 int main(int argc, char * argv[]);
 static void readFileToMatrix(char* filename);
 void keyPressed (unsigned char key, int x, int y);
-void drawSomething(bool wrap);
+GLuint createTexture(bool wrap);
+void mouseMove (int x, int y);
+void reshape(int w, int h);
 
 #endif

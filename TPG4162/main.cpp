@@ -1,60 +1,36 @@
-//
-//  main.cpp
-//  TPG4162
-//
-//  Created by Tri M. Nguyen on 10/21/12.
-//
-//
-
 #include "main.h"
 
 char** mat;
 
+int posx;
+int posy;
 
-int main(int argc, char * argv[])
+
+
+
+void mouseMove (int x, int y)
 {
-    // create the window
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-    glutCreateWindow("MipMip");
-    
-    glEnable( GL_TEXTURE_2D );
-    
-    // call drawings
-    drawSomething(true);
-    
-    glutDisplayFunc(redraw);
-    
-    glutReshapeWindow( 1280, 800);
-    glutPostRedisplay();
-    
-    glutKeyboardFunc(keyPressed);
-    
-    glutMainLoop();
-    
-    return 0;
+    std::cout << "asdf";
 }
 
-
-void keyPressed (unsigned char key, int x, int y)
+void reshape(int w, int h)
 {
-    switch (key) {
-        case 'w':
-            
-            std::cout << "U PRESSED THE WWWW";
-            break;
-            
-        default:
-            std::cout << "asdf";
-            break;
+    
+}
+
+void mouseClick(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON) {
+        std::cout << "LEFT BUTTON CLICKD " << x;
     }
 }
 
 
-void drawSomething(bool wrap)
+GLuint createTexture(bool wrap)
 {
-    // read data file into a matrix
-    readFileToMatrix("/Volumes/Macintosh HD/Dropbox/TPG4162-2/NVGT-88-06.sgy");
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
     
     char * texturedata = (char *)malloc(sizeof(char)*1024*1024);
     
@@ -64,26 +40,16 @@ void drawSomething(bool wrap)
         }
     }
     
-    GLuint texture;
-    
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
-    // when texture area is small, bilinear filter the closest mipmap
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    
-    // when texture area is large, bilinear filter the first mipmap
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-    
-    // if wrap is true, the texture wraps over at the edges (repeat)
-    //       ... false, the texture ends at the edges (clamp)
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP );
     
-    // glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, 1024, 1024, GL_RGB, GL_UNSIGNED_BYTE, 0);
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, 1024, 1024, GL_RED, GL_UNSIGNED_BYTE, texturedata);
     
     free(texturedata);
+    
+    return texture;
 }
 
 
@@ -92,13 +58,35 @@ static void redraw(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(0.0,0.0);
-    glTexCoord2d(1.0,0.0); glVertex2d(1.0,0.0);
-    glTexCoord2d(1.0,1.0); glVertex2d(1.0,1.0);
-    glTexCoord2d(0.0,1.0); glVertex2d(0.0,1.0);
+    
+        glTexCoord2d(0.0,0.0);
+        glVertex2d(0.0,0.0);
+    
+        glTexCoord2d(1.0,0.0);
+        glVertex2d(1.0,0.0);
+    
+        glTexCoord2d(1.0,1.0);
+        glVertex2d(1.0,1.0);
+    
+        glTexCoord2d(0.0,1.0);
+        glVertex2d(0.0,1.0);
+    
     glEnd();
     
     glutSwapBuffers();      //swaps the front and back buffers
+}
+
+
+void keyPressed (unsigned char key, int x, int y)
+{
+    switch (key) {
+        case 'w':
+            std::cout << "U PRESSED THE WWWW";
+            break;
+        default:
+            std::cout << "asdf";
+            break;
+    }
 }
 
 
@@ -107,9 +95,8 @@ static void readFileToMatrix(char* filename)
 {
     FILE *pFile = fopen(filename, "rb");
     
-    if (pFile == NULL) {
+    if (pFile == NULL)
         perror("Failed to open file");
-    }
     else {
         // skip the headers
         fseek(pFile, 3600, SEEK_SET);
@@ -127,3 +114,38 @@ static void readFileToMatrix(char* filename)
     fclose(pFile);
 }
 
+
+
+int main(int argc, char * argv[])
+{
+    posx = 0;
+    posy = 0;
+    
+    // read data file into a matrix
+    readFileToMatrix("/Users/tmn/Dropbox/TPG4162-2/NVGT-88-06.sgy");
+    
+    // create the window
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+    glutCreateWindow("MipMip");
+    
+    glEnable( GL_TEXTURE_2D );
+    
+    // call drawings woop
+    createTexture(true);
+    
+    glutDisplayFunc(redraw);
+    glutReshapeFunc(reshape);
+    
+    glutReshapeWindow( 1280, 800);
+    glutPostRedisplay();
+    
+    glutKeyboardFunc(keyPressed);
+    glutMotionFunc(mouseMove);
+    glutMouseFunc(mouseClick);
+    // glOrtho(<#GLdouble left#>, <#GLdouble right#>, <#GLdouble bottom#>, <#GLdouble top#>, <#GLdouble zNear#>, <#GLdouble zFar#>)
+    
+    glutMainLoop();
+    
+    return 0;
+}
