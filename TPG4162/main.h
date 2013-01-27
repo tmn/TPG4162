@@ -12,11 +12,13 @@
 #ifndef TPG4162_2_main_h
 #define TPG4162_2_main_h
 
-
-static void redraw(void);          //declarations
-int main(int argc, char * argv[]);
-static void readFileToMatrix(char* filename);
-void keyPressed (unsigned char key, int x, int y);
-void drawSomething(bool wrap);
+void paint(bool, int);
+void redraw(void);
+void mouseMove (int, int);
+void reshape(int, int);
+void mouseClick(int, int, int, int);
+void readFileToMatrix(char*);
+void init(void);
+int main(int, char* argv[]);
 
 #endif
