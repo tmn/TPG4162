@@ -1,3 +1,4 @@
+
 //
 //  main.cpp
 //  TPG4162-2
@@ -24,10 +25,11 @@ GLuint *textures;
 
 void paint(bool wrap, int texture_num)
 {
-    char * texturedata = (char *)malloc(sizeof(char)*1024*1750*3);
-    
+
+    char * texturedata = (char *)malloc(sizeof(char)*1024*1750*3);    
     int color;
     
+
     for (int x=0; x<1024; x++) {
         for (int y=0; y<1750; y++) {
             color = (mat[(texture_num*1024)+x][y]);
@@ -154,6 +156,7 @@ void mouseClick(int button, int state, int x, int y)
             leftButtonClicked = true;
             currentMousePositionX = x;
             currentMousePositionY = y;
+
         }
         else
             leftButtonClicked = false;
@@ -183,6 +186,7 @@ void readFileToMatrix(char* filename)
     
     // close file reader
     fclose(pFile);
+
 }
 
 
